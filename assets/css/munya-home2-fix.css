@@ -1,0 +1,156 @@
+/* Fixes for Travila Home 2 + Munya (RTL hero & header) */
+
+.box-banner-home2 .container-banner {
+  position: relative;
+  min-height: 769px;
+  overflow: hidden;
+}
+
+.box-banner-home2 .banner-main {
+  width: 100%;
+  min-height: 769px;
+}
+
+.box-banner-home2 .banner-main .slick-list,
+.box-banner-home2 .banner-main .slick-track {
+  min-height: 769px;
+}
+
+.box-banner-home2 .banner-main .slick-slide > div,
+.box-banner-home2 .banner-main .banner-slide {
+  min-height: 769px;
+}
+
+.box-banner-home2 .banner-main .banner-image {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 769px;
+  position: relative;
+  width: 100%;
+}
+
+.box-banner-home2 .banner-main .banner-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(14, 14, 14, 0.82) 0%,
+    rgba(14, 14, 14, 0.4) 45%,
+    rgba(14, 14, 14, 0.55) 100%
+  );
+  z-index: 0;
+}
+
+.box-banner-home2 .banner-main .banner-image .container {
+  position: relative;
+  z-index: 1;
+}
+
+.box-banner-home2 .banner-main .banner-image h1,
+.box-banner-home2 .banner-main .banner-image h6 {
+  color: #ffffff !important;
+  max-width: 720px;
+}
+
+.box-banner-home2 .banner-main:not(.slick-initialized) > .banner-slide:not(:first-child) {
+  display: none !important;
+}
+
+.box-banner-home2 .slider-thumnail {
+  width: 247px;
+  z-index: 120;
+}
+
+.box-banner-home2 .slider-nav-thumbnails .banner-slide {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.box-banner-home2 .slider-nav-thumbnails .banner-slide img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+
+html[dir="rtl"] .box-banner-home2 .banner-main .banner-image .container {
+  padding-right: 32px !important;
+  padding-left: 280px !important;
+  text-align: right;
+}
+
+html[dir="rtl"] .box-banner-home2 .slider-thumnail {
+  left: 24px !important;
+  right: auto !important;
+}
+
+html[dir="rtl"] .box-banner-home2 .slick-prev {
+  left: auto !important;
+  right: 15px !important;
+}
+
+html[dir="rtl"] .box-banner-home2 .slick-next {
+  left: auto !important;
+  right: 60px !important;
+}
+
+html[dir="rtl"] .header .main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
+html[dir="rtl"] .header .top-bar .text-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+html[dir="rtl"] .header .main-header .header-right .btn-mode {
+  margin: 0 !important;
+}
+
+/* Hide travel-template payment logos under values */
+#values > .container > .box-swiper.mt-30 {
+  display: none;
+}
+
+@media (max-width: 1199px) {
+  html[dir="rtl"] .box-banner-home2 .banner-main .banner-image .container {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  html[dir="rtl"] .box-banner-home2 .slider-thumnail {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    margin: 0 16px 16px;
+  }
+
+  .box-banner-home2 .container-banner {
+    min-height: 0;
+  }
+
+  .box-banner-home2 .banner-main,
+  .box-banner-home2 .banner-main .slick-list,
+  .box-banner-home2 .banner-main .slick-track,
+  .box-banner-home2 .banner-main .slick-slide > div,
+  .box-banner-home2 .banner-main .banner-slide {
+    min-height: 560px;
+  }
+
+  .box-banner-home2 .banner-main .banner-image {
+    min-height: 560px;
+    padding-bottom: 120px;
+  }
+}

@@ -1,0 +1,319 @@
+/* =============================================
+   RTL Overrides for Arabic
+   Only override what Bootstrap doesn't handle
+   ============================================= */
+
+/* Cairo font for Arabic */
+*,
+html,
+body {
+  font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif !important;
+}
+
+/* =============================================
+   Header - float and text-align fixes
+   (Bootstrap doesn't flip float/text-align)
+   ============================================= */
+.header .nav-main-menu {
+  text-align: right !important;
+}
+.header .main-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header .main-menu li {
+  float: none !important;
+}
+.header .main-header .header-left {
+  width: auto !important;
+  flex: 1 1 0;
+  min-width: 0;
+  gap: 16px;
+}
+.header .main-header .header-left .header-logo {
+  margin-right: 0 !important;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+.header .main-header .header-left .header-nav {
+  text-align: right;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.header .main-header .header-right {
+  width: auto !important;
+  min-width: 0 !important;
+  flex: 0 0 auto;
+  text-align: left !important;
+  justify-content: flex-end !important;
+}
+
+/* =============================================
+   Banner - swap padding/thumbnails for RTL
+   ============================================= */
+.banner-main .banner-image .container {
+  padding-right: 0 !important;
+  padding-left: 250px !important;
+}
+.slider-thumnail {
+  right: auto !important;
+  left: 0px !important;
+}
+
+/* Slick arrows - swap left/right */
+.slick-prev {
+  left: auto !important;
+  right: 15px !important;
+}
+.slick-next {
+  left: auto !important;
+  right: 60px !important;
+}
+
+/* =============================================
+   Top bar - arrow direction
+   ============================================= */
+.top-bar .link-secondary-2 svg {
+  transform: scaleX(-1);
+}
+
+/* =============================================
+   Contact Info Icons - swap padding
+   ============================================= */
+.box-info-contact .icon-address,
+.box-info-contact .icon-worktime,
+.box-info-contact .icon-email {
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+/* =============================================
+   Form labels RTL
+   ============================================= */
+.form-login label,
+.item-search label {
+  text-align: right;
+  display: block;
+}
+
+/* =============================================
+   Date input RTL
+   ============================================= */
+.box-calendar-date .search-input {
+  text-align: right;
+  direction: rtl;
+}
+
+/* =============================================
+   Box search category - keep car brands LTR
+   ============================================= */
+.box-list-brand-car {
+  direction: ltr;
+}
+
+/* =============================================
+   Why Travel With Us - arrow flip
+   ============================================= */
+.card-why-travel .card-link svg {
+  transform: scaleX(-1);
+}
+
+/* =============================================
+   Sidebar canvas - swap positions
+   ============================================= */
+.sidebar-canvas-head {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.sidebar-canvas-lang {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.sidebar-canvas-content .box-author-profile {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.item-quicklinks {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+}
+.item-quicklinks .item-info {
+  text-align: right;
+}
+
+/* =============================================
+   Mobile menu - swap logo position
+   ============================================= */
+.mobile-header-wrapper-inner .mobile-header-logo {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.mobile-header-top .box-author-profile {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* =============================================
+   Footer - swap text alignment
+   ============================================= */
+.footer .col-md-3,
+.footer .col-md-2 {
+  text-align: right;
+}
+.footer .menu-footer li {
+  text-align: right;
+}
+.footer-bottom .text-md-start {
+  text-align: right !important;
+}
+.footer-bottom .text-md-end {
+  text-align: left !important;
+}
+.footer .box-info-contact p {
+  text-align: right;
+}
+
+/* =============================================
+   Newsletter form - swap direction
+   ============================================= */
+.form-newsletter {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* =============================================
+   Box remember/forgot - swap direction
+   ============================================= */
+.box-remember-forgot {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+/* =============================================
+   Popups - RTL direction
+   ============================================= */
+.popup-left, .popup-right {
+  direction: rtl;
+}
+
+/* =============================================
+   Card layouts - swap for RTL
+   ============================================= */
+.card-testimonial .card-top {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-testimonial .card-author {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+}
+.card-testimonial .card-info {
+  text-align: right;
+}
+.card-news .card-meta {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+.card-news .card-author {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+}
+.card-news .card-info {
+  text-align: right;
+}
+.card-journey-small .card-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.card-journey-small .card-program .endtime {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-journey-small .card-program .card-duration-tour {
+  text-align: right;
+}
+.card-journey-small .card-program .card-facitlities {
+  text-align: right;
+}
+.card-journey-small .card-info .card-location {
+  text-align: right;
+}
+.popular-categories {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+.box-button-slider {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* =============================================
+   Box top search - swap direction
+   ============================================= */
+.box-top-search {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.left-top-search {
+  justify-content: flex-end;
+}
+
+/* =============================================
+   Box left payment - text alignment
+   ============================================= */
+.box-left-payment {
+  text-align: right;
+}
+
+/* =============================================
+   Dropdown menus - text alignment
+   ============================================= */
+.dropdown-menu {
+  text-align: right;
+}
+
+/* =============================================
+   Hero banner text visibility in dark mode
+   ============================================= */
+[data-bs-theme=dark] .banner-image h1,
+[data-bs-theme=dark] .banner-image h6,
+[data-bs-theme=dark] .banner-image .btn-brand-secondary {
+  color: #fff;
+}
+[data-bs-theme=dark] .banner-image .btn-brand-secondary {
+  background-color: var(--bs-brand-secondary);
+  color: #000;
+}
+
+/* =============================================
+   Prevent horizontal overflow
+   ============================================= */
+body {
+  overflow-x: hidden;
+}
+
+/* Arabic text wrapping */
+h1, h2, h3, h4, h5, h6,
+p, a, span, div, li, label, button {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
