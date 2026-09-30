@@ -1,0 +1,79 @@
+/* Accessibility — focus, skip link, contrast helpers */
+.munya-skip-link {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 1rem;
+  z-index: 100000;
+  padding: 0.65rem 1rem;
+  background: var(--munya-primary, #0a1f44);
+  color: #fff !important;
+  font-family: var(--munya-font-ar);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transform: translateY(-120%);
+  transition: transform 0.2s ease;
+}
+
+.munya-skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid var(--munya-gold, #c9a227);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--munya-gold, #c9a227);
+  outline-offset: 3px;
+}
+
+.munya-field__input:focus-visible,
+.munya-contact-form__submit:focus-visible,
+.munya-btn-primary:focus-visible,
+.munya-btn-cta:focus-visible,
+.munya-nav a:focus-visible {
+  outline: 2px solid var(--munya-gold, #c9a227);
+  outline-offset: 2px;
+}
+
+.munya-field--error .munya-field__input {
+  border-bottom-color: #dc2626 !important;
+  box-shadow: 0 2px 0 rgba(220, 38, 38, 0.35) !important;
+}
+
+.munya-field__optional {
+  font-weight: 400;
+  font-size: 0.8125rem;
+  color: var(--munya-text-muted, #64748b);
+}
+
+.munya-field__error {
+  display: block;
+  font-family: var(--munya-font-ar);
+  font-size: 0.75rem;
+  color: #b91c1c;
+  margin-top: 0.35rem;
+  min-height: 1.1rem;
+}
+
+.munya-form-success {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 0.75rem;
+  background: rgba(22, 163, 74, 0.12);
+  border: 1px solid rgba(22, 163, 74, 0.35);
+  font-family: var(--munya-font-ar);
+  font-size: 0.9375rem;
+  color: #166534;
+  text-align: right;
+}
+
+.munya-form-success.is-visible {
+  display: block;
+}
+
+[data-bs-theme="dark"] .munya-form-success {
+  color: #86efac;
+  background: rgba(22, 163, 74, 0.18);
+}

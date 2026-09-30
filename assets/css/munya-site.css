@@ -34,7 +34,10 @@ main .container,
 .munya-feature-card__title,
 .munya-about__title,
 .munya-portfolio__title,
+.munya-contact__title,
 .munya-contact-dark__title,
+.munya-bento__title,
+.munya-services__title,
 .munya-why__title,
 .munya-trust__title {
   font-family: var(--munya-font-ar);
@@ -259,7 +262,7 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scale(1.02);
+  transform: scale(1);
 }
 
 .munya-hero__overlay {
@@ -617,11 +620,13 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   }
 }
 
-/* Values — horizontal scroll */
+/* Values — horizontal scroll (contained) / grid on wide screens */
 .munya-values {
   background: #ffffff;
   border-top: 1px solid rgba(10, 31, 68, 0.06);
   padding-bottom: calc(var(--munya-section-y) * 0.85);
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .munya-values__eyebrow {
@@ -661,12 +666,14 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-padding-inline: var(--munya-shell-px);
   padding-bottom: 0.5rem;
   margin-top: 0.5rem;
   scrollbar-width: thin;
   scrollbar-color: rgba(201, 162, 39, 0.5) transparent;
+  width: 100%;
+  max-width: 100%;
 }
 
 .munya-values-scroll__track {
@@ -675,7 +682,7 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   padding-inline: max(var(--munya-shell-px), calc((100% - var(--munya-shell-max)) / 2 + var(--munya-shell-px)));
   padding-block: 0.25rem 1rem;
   width: max-content;
-  max-width: 100%;
+  min-width: min(100%, max-content);
 }
 
 .munya-value-slide {
@@ -775,13 +782,36 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .munya-values-scroll {
-    overflow-x: auto;
+    overflow-x: visible;
+    max-width: var(--munya-shell-max);
+    margin-inline: auto;
+    padding-inline: var(--munya-shell-px);
+    scroll-snap-type: none;
+  }
+
+  .munya-values-scroll__track {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+    padding-inline: 0;
   }
 
   .munya-value-slide {
-    flex-basis: 300px;
+    flex: unset;
+    min-width: 0;
+  }
+
+  .munya-values-scroll__hint {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1279px) {
+  .munya-value-slide {
+    flex: 0 0 min(280px, 38vw);
   }
 }
 
@@ -999,80 +1029,420 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   color: var(--munya-navy);
 }
 
-/* Why choose us — excellence */
-.munya-why {
-  margin-top: clamp(2.5rem, 5vw, 3.5rem);
-  padding-top: clamp(2rem, 4vw, 3rem);
-  border-top: 1px solid rgba(10, 22, 40, 0.08);
+/* Bento — why clients trust us */
+.munya-bento-section {
+  background: var(--munya-neutral-bg);
+  border-top: 1px solid rgba(10, 31, 68, 0.06);
 }
 
-.munya-section > .container > .munya-why:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
+.munya-bento__head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-.munya-why__head {
-  margin-bottom: 2.25rem;
-}
-
-.munya-why__title {
+.munya-bento__title {
   font-family: var(--munya-font-ar);
   font-weight: 700;
   font-size: clamp(2rem, 3.5vw, 3.125rem);
   letter-spacing: -0.03em;
-  color: var(--munya-navy);
-  margin: 0 0 0.5rem;
+  color: var(--munya-primary);
+  margin: 0 0 0.65rem;
 }
 
-.munya-why__subtitle {
+.munya-bento__subtitle {
+  font-family: var(--munya-font-ar);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0 auto;
+  max-width: 36rem;
+}
+
+.munya-bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.munya-bento__tile {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  min-height: 11rem;
+}
+
+.munya-bento__tile--lg {
+  grid-column: 1 / -1;
+  min-height: clamp(240px, 38vw, 320px);
+}
+
+.munya-bento__tile--sm {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 1.5rem 1.35rem;
+  background: #ffffff;
+  border: 1px solid rgba(10, 31, 68, 0.08);
+  box-shadow: 0 12px 36px rgba(10, 31, 68, 0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.munya-bento__tile--sm:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 162, 39, 0.45);
+  box-shadow: 0 20px 48px rgba(10, 31, 68, 0.12);
+}
+
+.munya-bento__visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+.munya-bento__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.munya-bento__tile--lg:hover .munya-bento__visual img {
+  transform: scale(1.05);
+}
+
+.munya-bento__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.88) 0%, rgba(10, 31, 68, 0.35) 55%, transparent 100%);
+}
+
+.munya-bento__content {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 1.75rem 1.5rem;
+  text-align: right;
+}
+
+.munya-bento__heading {
+  font-family: var(--munya-font-ar);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  color: #ffffff;
+  margin: 0 0 0.4rem;
+}
+
+.munya-bento__tile--sm .munya-bento__heading {
+  color: var(--munya-primary);
+}
+
+.munya-bento__text {
+  font-family: var(--munya-font-ar);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.munya-bento__tile--sm .munya-bento__text {
+  color: #475569;
+}
+
+.munya-bento__icon {
+  display: inline-flex;
+  margin-bottom: auto;
+  padding-bottom: 1rem;
+  color: var(--munya-gold);
+}
+
+@media (min-width: 992px) {
+  .munya-bento__tile--quality {
+    grid-column: 1 / 9;
+    grid-row: 1;
+  }
+
+  .munya-bento__tile--deadline {
+    grid-column: 9 / 13;
+    grid-row: 1;
+  }
+
+  .munya-bento__tile--after {
+    grid-column: 1 / 9;
+    grid-row: 2;
+  }
+
+  .munya-bento__tile--custom {
+    grid-column: 9 / 13;
+    grid-row: 2;
+  }
+
+  .munya-bento__tile--sm {
+    min-height: 13.5rem;
+  }
+}
+
+@media (hover: none) {
+  .munya-service-card__cta {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .munya-bento__tile--sm {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Services — 3×2 grid */
+.munya-services {
+  background: #ffffff;
+  border-top: 1px solid rgba(10, 31, 68, 0.06);
+}
+
+.munya-services__eyebrow {
+  display: inline-block;
+  font-family: var(--munya-font-ar);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--munya-gold);
+  margin-bottom: 0.5rem;
+}
+
+.munya-services__title {
+  margin: 0 0 0.65rem;
+  color: var(--munya-primary);
+}
+
+.munya-services__lead {
   font-family: var(--munya-font-ar);
   font-size: 1.0625rem;
   color: #64748b;
-  margin: 0 auto;
-  max-width: 32rem;
+  max-width: 34rem;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
 }
 
-.munya-benefit-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 1.5rem 1.35rem;
+.munya-services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.munya-service-card {
+  position: relative;
+  border-radius: 1.15rem;
+  min-height: 15.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.munya-service-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--munya-svc-bg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 0.45s ease, transform 0.55s ease;
+}
+
+.munya-service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(145deg, rgba(10, 31, 68, 0.92), rgba(13, 13, 13, 0.75));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.munya-service-card:hover .munya-service-card__bg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.munya-service-card:hover::after {
+  opacity: 0.72;
+}
+
+.munya-service-card__body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: 1.45rem 1.35rem;
   text-align: right;
-  border: 1px solid rgba(10, 22, 40, 0.07);
-  box-shadow: 0 8px 28px rgba(10, 22, 40, 0.07);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  background: var(--munya-neutral-bg);
+  border: 1px solid rgba(10, 31, 68, 0.08);
+  border-radius: 1.15rem;
+  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease, color 0.35s ease;
 }
 
-.munya-benefit-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 36px rgba(10, 22, 40, 0.1);
+.munya-service-card:hover .munya-service-card__body {
+  background: transparent;
+  border-color: rgba(201, 162, 39, 0.35);
+  transform: translateY(-6px);
+  color: #fff;
 }
 
-.munya-benefit-card__icon {
+.munya-service-card__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
   margin-bottom: 1rem;
-  background: rgba(201, 162, 39, 0.12);
-  color: #9a7518;
+  background: rgba(201, 162, 39, 0.16);
+  color: var(--munya-gold);
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
-.munya-benefit-card__title {
+.munya-service-card:hover .munya-service-card__icon {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--munya-gold-light);
+}
+
+.munya-service-card__title {
   font-family: var(--munya-font-ar);
   font-weight: 700;
   font-size: 1.125rem;
-  color: var(--munya-navy);
-  margin: 0 0 0.5rem;
+  color: var(--munya-primary);
+  margin: 0 0 0.45rem;
+  transition: color 0.35s ease;
 }
 
-.munya-benefit-card__text {
+.munya-service-card:hover .munya-service-card__title {
+  color: #fff;
+}
+
+.munya-service-card__desc {
+  font-family: var(--munya-font-ar);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #64748b;
+  margin: 0 0 1rem;
+  flex: 1 1 auto;
+  transition: color 0.35s ease;
+}
+
+.munya-service-card:hover .munya-service-card__desc {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.munya-service-card__cta {
+  font-family: var(--munya-font-ar);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  text-decoration: none;
+  background: var(--munya-gold-gradient);
+  color: var(--munya-primary-deep) !important;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.munya-service-card:hover .munya-service-card__cta {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.35);
+}
+
+.munya-service-card__cta:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+  outline: 2px solid var(--munya-gold-light);
+  outline-offset: 2px;
+}
+
+@media (max-width: 991px) {
+  .munya-services__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .munya-services__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Stats strip */
+.munya-stats {
+  position: relative;
+  padding: clamp(2.75rem, 5vw, 3.75rem) 0;
+  background: linear-gradient(135deg, var(--munya-primary) 0%, var(--munya-primary-deep) 100%);
+  overflow: hidden;
+}
+
+.munya-stats__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(30deg, rgba(201, 162, 39, 0.35) 12%, transparent 12.5%, transparent 87%, rgba(201, 162, 39, 0.35) 87.5%, rgba(201, 162, 39, 0.35)),
+    linear-gradient(150deg, rgba(201, 162, 39, 0.35) 12%, transparent 12.5%, transparent 87%, rgba(201, 162, 39, 0.35) 87.5%, rgba(201, 162, 39, 0.35)),
+    linear-gradient(30deg, rgba(201, 162, 39, 0.35) 12%, transparent 12.5%, transparent 87%, rgba(201, 162, 39, 0.35) 87.5%, rgba(201, 162, 39, 0.35)),
+    linear-gradient(150deg, rgba(201, 162, 39, 0.35) 12%, transparent 12.5%, transparent 87%, rgba(201, 162, 39, 0.35) 87.5%, rgba(201, 162, 39, 0.35));
+  background-size: 48px 84px;
+  background-position: 0 0, 0 0, 24px 42px, 24px 42px;
+  pointer-events: none;
+}
+
+.munya-stats__list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .munya-stats__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.munya-stats__item {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.munya-stats__value {
+  display: block;
+  font-family: var(--munya-font-en);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--munya-gold-light);
+  margin-bottom: 0.35rem;
+}
+
+.munya-stats__value--static {
+  font-family: var(--munya-font-en);
+}
+
+.munya-stats__label {
+  display: block;
   font-family: var(--munya-font-ar);
   font-size: 0.9375rem;
-  line-height: 1.55;
-  color: #475569;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* Objective + quality — dark pillars */
@@ -1132,87 +1502,6 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   color: rgba(255, 255, 255, 0.82);
 }
 
-/* Certificates + partners */
-.munya-trust {
-  background: #ffffff;
-  border-top: 1px solid rgba(10, 22, 40, 0.06);
-}
-
-[data-bs-theme="dark"] .munya-trust {
-  background: #ffffff;
-}
-
-.munya-trust-card {
-  padding: clamp(2rem, 4vw, 2.75rem);
-  text-align: right;
-  border-radius: 0;
-  background: transparent;
-}
-
-.munya-trust-card__head {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.munya-trust-card__icon {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(10, 22, 40, 0.05);
-  color: var(--munya-navy);
-}
-
-.munya-trust-card__title {
-  font-family: var(--munya-font-ar);
-  font-weight: 800;
-  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
-  color: var(--munya-navy);
-}
-
-.munya-trust-card__text {
-  font-family: var(--munya-font-ar);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: #475569;
-  max-width: 28rem;
-}
-
-.munya-trust-card__slots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px dashed rgba(10, 22, 40, 0.12);
-}
-
-.munya-trust-slot {
-  font-family: var(--munya-font-ar);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #64748b;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  background: #f1f5f9;
-  border: 1px solid rgba(10, 22, 40, 0.06);
-}
-
-@media (min-width: 992px) {
-  .munya-trust .col-lg-6:first-child .munya-trust-card {
-    padding-inline-end: clamp(2rem, 4vw, 3.5rem);
-    border-inline-end: 1px solid rgba(10, 22, 40, 0.08);
-  }
-
-  .munya-trust .col-lg-6:last-child .munya-trust-card {
-    padding-inline-start: clamp(2rem, 4vw, 3.5rem);
-  }
-}
 
 .munya-panel {
   background: var(--bs-background-4);
@@ -1293,18 +1582,14 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   transform: scale(1.05);
 }
 
-/* Portfolio */
+/* Portfolio — masonry grid */
 .munya-portfolio {
-  background: #f8fafc;
-  border-top: 1px solid rgba(10, 22, 40, 0.06);
-}
-
-[data-bs-theme="dark"] .munya-portfolio {
-  background: #f8fafc;
+  background: var(--munya-neutral-bg);
+  border-top: 1px solid rgba(10, 31, 68, 0.06);
 }
 
 .munya-portfolio__head {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .munya-portfolio__title {
@@ -1312,85 +1597,388 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   font-weight: 700;
   font-size: clamp(2rem, 3.5vw, 3.125rem);
   letter-spacing: -0.03em;
-  color: var(--munya-navy);
-  margin: 1.15rem 0 0;
+  color: var(--munya-primary);
+  margin: 0 0 0.5rem;
 }
 
-.munya-portfolio-card {
-  position: relative;
-  border-radius: 16px;
+.munya-portfolio__lead {
+  font-family: var(--munya-font-ar);
+  font-size: 1.0625rem;
+  color: #64748b;
+  margin: 0 auto;
+  max-width: 32rem;
+  line-height: 1.7;
+}
+
+.munya-portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.munya-portfolio-filters__btn {
+  font-family: var(--munya-font-ar);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 31, 68, 0.12);
+  background: #ffffff;
+  color: #64748b;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.munya-portfolio-filters__btn:hover {
+  border-color: rgba(201, 162, 39, 0.45);
+  color: var(--munya-primary);
+}
+
+.munya-portfolio-filters__btn.is-active {
+  background: var(--munya-gold-gradient);
+  border-color: transparent;
+  color: var(--munya-primary-deep);
+  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.32);
+}
+
+.munya-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: minmax(200px, auto);
+  gap: 1rem;
+}
+
+.munya-project {
+  grid-column: 1 / -1;
+  min-height: 240px;
+  border-radius: 1.15rem;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
-  background: #e2e8f0;
-  box-shadow: 0 12px 40px rgba(10, 22, 40, 0.08);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.munya-portfolio-card__img {
+.munya-project.is-hidden {
+  display: none;
+}
+
+.munya-project__link {
+  position: relative;
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
+  min-height: 240px;
+  text-decoration: none;
+  color: inherit;
 }
 
-.munya-portfolio-card__overlay {
+@media (min-width: 992px) {
+  .munya-project__link {
+    min-height: 100%;
+  }
+}
+
+.munya-project__img {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.munya-project__overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.5rem;
+  align-items: flex-start;
+  padding: 1.35rem;
   text-align: right;
-  background: linear-gradient(180deg, rgba(6, 13, 24, 0) 35%, rgba(6, 13, 24, 0.88) 100%);
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.9) 0%, rgba(10, 31, 68, 0.25) 55%, transparent 100%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
 
-.munya-portfolio-card__name {
+.munya-project__tag {
+  font-family: var(--munya-font-ar);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.22);
+  color: var(--munya-gold-light);
+  margin-bottom: 0.5rem;
+}
+
+.munya-project__title {
   font-family: var(--munya-font-ar);
   font-weight: 700;
-  font-size: 1.125rem;
-  color: #ffffff;
-  margin: 0 0 0.35rem;
-  transform: translateY(8px);
+  font-size: 1.0625rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  transform: translateY(6px);
   transition: transform 0.35s ease;
 }
 
-.munya-portfolio-card__desc {
-  font-family: var(--munya-font-ar);
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.88);
-  transform: translateY(8px);
-  transition: transform 0.35s ease;
+.munya-project__zoom {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  transform: scale(0.85);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
 }
 
-.munya-portfolio-card:hover .munya-portfolio-card__img {
+.munya-project__link:hover .munya-project__img,
+.munya-project__link:focus-visible .munya-project__img {
   transform: scale(1.06);
 }
 
-.munya-portfolio-card:hover .munya-portfolio-card__overlay {
+.munya-project__link:hover .munya-project__overlay,
+.munya-project__link:focus-visible .munya-project__overlay {
   opacity: 1;
 }
 
-.munya-portfolio-card:hover .munya-portfolio-card__name,
-.munya-portfolio-card:hover .munya-portfolio-card__desc {
+.munya-project__link:hover .munya-project__title,
+.munya-project__link:focus-visible .munya-project__title {
   transform: translateY(0);
 }
 
-@media (hover: none) {
-  .munya-portfolio-card__overlay {
-    opacity: 1;
+.munya-project__link:hover .munya-project__zoom,
+.munya-project__link:focus-visible .munya-project__zoom {
+  opacity: 1;
+  transform: scale(1);
+  background: rgba(201, 162, 39, 0.35);
+}
+
+@media (min-width: 992px) {
+  .munya-projects-grid {
+    grid-auto-rows: 200px;
   }
 
-  .munya-portfolio-card__name,
-  .munya-portfolio-card__desc {
-    transform: translateY(0);
+  .munya-project {
+    grid-column: span 4;
+    min-height: 0;
+  }
+
+  .munya-project__img {
+    min-height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+
+  .munya-project--tall {
+    grid-column: span 5;
+    grid-row: span 2;
+  }
+
+  .munya-project:nth-child(2) {
+    grid-column: span 7;
+  }
+
+  .munya-project:nth-child(3) {
+    grid-column: span 4;
+  }
+
+  .munya-project:nth-child(4) {
+    grid-column: span 3;
+  }
+
+  .munya-project:nth-child(5) {
+    grid-column: span 5;
+  }
+
+  .munya-project--wide {
+    grid-column: span 7;
+    grid-row: span 1;
   }
 }
 
-.munya-portfolio .mt-40 {
+@media (hover: none) {
+  .munya-project__overlay {
+    opacity: 1;
+  }
+
+  .munya-project__title {
+    transform: none;
+  }
+
+  .munya-project__zoom {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.munya-portfolio__empty {
+  text-align: center;
+  font-family: var(--munya-font-ar);
+  color: #64748b;
+  margin: 1rem 0 0;
+}
+
+.munya-portfolio__cta-wrap {
   margin-top: 2.5rem;
+}
+
+/* Clients marquee */
+.munya-clients {
+  padding: clamp(2rem, 4vw, 2.75rem) 0;
+  background: #eef0eb;
+  border-top: 1px solid rgba(10, 31, 68, 0.06);
+  overflow: hidden;
+}
+
+.munya-clients__label {
+  font-family: var(--munya-font-ar);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #94a3b8;
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+}
+
+.munya-marquee {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.munya-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  padding-inline: 1.25rem;
+  animation: munya-marquee-scroll 38s linear infinite;
+}
+
+@keyframes munya-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.munya-client-logo {
+  flex-shrink: 0;
+  font-family: var(--munya-font-ar);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: #94a3b8;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(148, 163, 184, 0.45);
+  background: rgba(255, 255, 255, 0.45);
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.munya-client-logo:hover {
+  color: var(--munya-primary);
+  border-color: rgba(201, 162, 39, 0.55);
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Certificates grid */
+.munya-certs {
+  background: #ffffff;
+  border-top: 1px solid rgba(10, 31, 68, 0.06);
+}
+
+.munya-certs__title {
+  font-family: var(--munya-font-ar);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  letter-spacing: -0.02em;
+  color: var(--munya-primary);
+  margin: 0 0 0.4rem;
+}
+
+.munya-certs__lead {
+  font-family: var(--munya-font-ar);
+  font-size: 0.9375rem;
+  color: #64748b;
+  margin: 0 auto 2rem;
+  max-width: 28rem;
+  line-height: 1.65;
+}
+
+.munya-certs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .munya-certs__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.munya-cert-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+  padding: 1.25rem 1.15rem;
+  border-radius: 1rem;
+  background: var(--munya-neutral-bg);
+  border: 1px solid rgba(10, 31, 68, 0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.munya-cert-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 162, 39, 0.4);
+  box-shadow: 0 16px 40px rgba(10, 31, 68, 0.08);
+}
+
+.munya-cert-card__icon {
+  display: inline-flex;
+  color: var(--munya-gold);
+  margin-bottom: 0.75rem;
+}
+
+.munya-cert-card__name {
+  font-family: var(--munya-font-ar);
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--munya-primary);
+  margin: 0 0 1rem;
+  flex: 1 1 auto;
+}
+
+.munya-cert-card__btn {
+  font-family: var(--munya-font-ar);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  color: var(--munya-primary) !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.munya-cert-card__btn:hover {
+  background: var(--munya-gold-gradient);
+  border-color: transparent;
+  color: var(--munya-primary-deep) !important;
 }
 
 .munya-contact-box {
@@ -1417,27 +2005,516 @@ html[dir="rtl"] .header.munya-header .main-header .header-right {
   color: var(--munya-accent-dark);
 }
 
-/* Contact — dark block */
-.munya-contact-dark {
-  padding: clamp(3rem, 5vw, 4.5rem) 0;
-  background: linear-gradient(135deg, var(--munya-navy) 0%, var(--munya-navy-deep) 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+/* Contact */
+.munya-contact {
+  background: #ffffff;
+  border-top: 1px solid rgba(10, 31, 68, 0.08);
 }
 
-.munya-contact-dark__title {
+.munya-contact__head {
+  margin-bottom: 2.5rem;
+}
+
+.munya-contact__title {
   font-family: var(--munya-font-ar);
   font-weight: 700;
   font-size: clamp(2rem, 3.5vw, 3.125rem);
   letter-spacing: -0.03em;
-  color: #ffffff;
+  color: var(--munya-primary);
+  margin: 0 0 0.5rem;
+}
+
+.munya-contact__subtitle {
+  font-family: var(--munya-font-ar);
+  font-size: 1.0625rem;
+  color: #64748b;
+  margin: 0 auto;
+  max-width: 32rem;
+  line-height: 1.7;
+}
+
+.munya-contact__grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .munya-contact__grid:not(.munya-contact__grid--info-only) {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 3rem;
+  }
+}
+
+.munya-contact__grid--info-only {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.munya-contact__info--center {
+  text-align: center;
+}
+
+.munya-contact__info--center .munya-contact-list li {
+  justify-content: center;
+  text-align: right;
+}
+
+.munya-contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: center;
+  margin-top: 1.75rem;
+}
+
+.munya-contact__actions .munya-btn-primary,
+.munya-contact__actions .munya-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11.5rem;
+}
+
+.munya-contact__actions .munya-btn-outline {
+  color: var(--munya-primary) !important;
+  background: #ffffff;
+  border: 2px solid var(--munya-primary);
+  box-shadow: 0 2px 10px rgba(10, 31, 68, 0.08);
+}
+
+.munya-contact__actions .munya-btn-outline:hover {
+  color: var(--munya-primary-deep) !important;
+  background: rgba(10, 31, 68, 0.05);
+  border-color: var(--munya-gold);
+}
+
+.munya-contact__manager {
+  font-family: var(--munya-font-ar);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--munya-gold);
+  margin-bottom: 1.25rem;
+}
+
+.munya-contact-list--light .munya-contact-list__label {
+  color: #94a3b8;
+}
+
+.munya-contact-list--light .munya-contact-list__value {
+  color: var(--munya-primary);
+}
+
+.munya-contact-list--light a.munya-contact-list__value:hover {
+  color: var(--munya-gold);
+}
+
+.munya-contact-list__icon--gold {
+  background: rgba(201, 162, 39, 0.12) !important;
+  color: var(--munya-gold) !important;
+  border: 1px solid rgba(201, 162, 39, 0.28);
+}
+
+.munya-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  text-align: right;
+}
+
+.munya-field__label {
+  display: block;
+  font-family: var(--munya-font-ar);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.munya-field__input {
+  width: 100%;
+  font-family: var(--munya-font-ar);
+  font-size: 1rem;
+  color: var(--munya-primary);
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(10, 31, 68, 0.18);
+  border-radius: 0;
+  padding: 0.55rem 0 0.65rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.munya-field__input:focus {
+  outline: none;
+  border-bottom-color: var(--munya-gold);
+  box-shadow: 0 2px 0 rgba(201, 162, 39, 0.35);
+}
+
+.munya-field__input::placeholder {
+  color: #cbd5e1;
+}
+
+.munya-field__select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2364748b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-inline-start: 0;
+}
+
+.munya-field__textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.munya-contact-form__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--munya-font-ar);
+  font-size: 0.8125rem;
+  color: #64748b;
+  cursor: pointer;
+  margin: 0;
+}
+
+.munya-contact-form__check input {
+  margin-top: 0.2rem;
+  accent-color: var(--munya-gold);
+}
+
+.munya-contact-form__check a {
+  color: var(--munya-primary);
+  text-decoration: underline;
+}
+
+.munya-contact-form__submit {
+  align-self: flex-start;
+  font-family: var(--munya-font-ar);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--munya-gold-gradient);
+  color: var(--munya-primary-deep);
+  box-shadow: 0 10px 28px rgba(201, 162, 39, 0.32);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.munya-contact-form__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--munya-shadow-gold);
+}
+
+.munya-contact-map-wrap--section {
+  margin-top: 2.5rem;
+  min-height: 320px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(10, 31, 68, 0.1);
+  box-shadow: 0 16px 48px rgba(10, 31, 68, 0.08);
+}
+
+.munya-contact-map-wrap--section .munya-contact-map {
+  min-height: 320px;
+}
+
+.munya-contact-map-local {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.munya-contact-map-local__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.munya-contact-map-local__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 31, 68, 0.82), rgba(13, 13, 13, 0.55));
+}
+
+.munya-contact-map-local__caption {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 320px;
+  padding: 2rem 1.75rem;
+  text-align: right;
+  font-family: var(--munya-font-ar);
+  color: #fff;
+}
+
+.munya-contact-map-local__caption strong {
+  font-size: 1.25rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
-.munya-contact-dark__lead {
+.munya-contact-map-local__caption span {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 28rem;
+}
+
+/* Final CTA — card band above footer */
+.munya-final-cta {
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(2.75rem, 5vw, 4rem);
+  background: var(--munya-neutral-bg, #f5f5f0);
+  border-top: 1px solid rgba(10, 31, 68, 0.08);
+}
+
+.munya-final-cta__card {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  border-radius: 1.35rem;
+  background: linear-gradient(145deg, #0a1f44 0%, #0f2848 48%, #132f55 100%);
+  border: 1px solid rgba(201, 162, 39, 0.28);
+  box-shadow:
+    0 28px 56px rgba(10, 31, 68, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.munya-final-cta__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 4px;
+  background: var(--munya-gold-gradient);
+  z-index: 2;
+}
+
+.munya-final-cta__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(48px);
+  opacity: 0.45;
+}
+
+.munya-final-cta__glow--1 {
+  width: 280px;
+  height: 280px;
+  top: -120px;
+  inset-inline-end: -80px;
+  background: rgba(201, 162, 39, 0.35);
+}
+
+.munya-final-cta__glow--2 {
+  width: 220px;
+  height: 220px;
+  bottom: -100px;
+  inset-inline-start: -60px;
+  background: rgba(37, 211, 102, 0.12);
+}
+
+.munya-final-cta__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.munya-final-cta__eyebrow {
+  display: inline-block;
+  font-family: var(--munya-font-ar);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--munya-gold-light, #e8c547);
+  margin-bottom: 0.65rem;
+}
+
+.munya-final-cta__title {
+  font-family: var(--munya-font-ar);
+  font-weight: 700;
+  font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+}
+
+.munya-final-cta__lead {
+  font-family: var(--munya-font-ar);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 auto 1.5rem;
+  max-width: 32rem;
+}
+
+.munya-final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: center;
+}
+
+.munya-final-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--munya-font-ar);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.45rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.munya-final-cta__btn--primary {
+  background: var(--munya-gold-gradient);
+  color: var(--munya-primary-deep) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 28px rgba(201, 162, 39, 0.35);
+}
+
+.munya-final-cta__btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--munya-shadow-gold);
+  color: var(--munya-dark) !important;
+}
+
+.munya-final-cta__btn--wa {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.munya-final-cta__btn--wa:hover {
+  background: rgba(37, 211, 102, 0.18);
+  border-color: rgba(37, 211, 102, 0.65);
+  transform: translateY(-2px);
+}
+
+.munya-final-cta__aside {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.15rem 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.munya-final-cta__aside-label {
+  font-family: var(--munya-font-ar);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 0.25rem;
+}
+
+.munya-final-cta__aside-value {
   font-family: var(--munya-font-ar);
   font-size: 1.0625rem;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.15rem;
+}
+
+.munya-final-cta__aside-meta {
+  font-family: var(--munya-font-ar);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+.munya-final-cta__aside-divider {
+  display: block;
+  height: 1px;
+  margin: 1rem auto;
+  max-width: 8rem;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.5), transparent);
+}
+
+@media (min-width: 768px) {
+  .munya-final-cta__card {
+    grid-template-columns: 1.35fr minmax(12rem, 0.85fr);
+    gap: 2rem 2.25rem;
+    padding: clamp(2rem, 3.5vw, 2.75rem) clamp(2rem, 4vw, 3rem);
+  }
+
+  .munya-final-cta__content {
+    text-align: right;
+  }
+
+  .munya-final-cta__actions {
+    justify-content: flex-start;
+  }
+
+  .munya-final-cta__lead {
+    margin-inline: 0;
+  }
+
+  .munya-final-cta__aside {
+    text-align: right;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Travila template scrollUp — disabled (we use .munya-back-top) */
+#scrollUp {
+  display: none !important;
+}
+
+/* Back to top — opposite corner from WhatsApp FAB */
+.munya-back-top {
+  position: fixed;
+  z-index: 1090;
+  bottom: 1.5rem;
+  inset-inline-start: 1.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 50%;
+  background: var(--munya-primary);
+  color: var(--munya-gold-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease;
+}
+
+.munya-back-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.munya-back-top:hover {
+  background: var(--munya-primary-deep);
 }
 
 .munya-contact-list {
@@ -1566,18 +2643,84 @@ a.munya-contact-list__value:hover {
 
 /* Footer */
 .footer.munya-footer {
-  padding: clamp(2.5rem, 4vw, 3.5rem) 0 1.25rem;
+  padding: clamp(2.75rem, 5vw, 4rem) 0 1.5rem;
 }
 
 .footer.munya-footer--dark {
-  background: var(--munya-dark) !important;
-  border-top: 1px solid rgba(201, 162, 39, 0.18);
+  background: linear-gradient(180deg, #0a0a0a 0%, var(--munya-dark) 100%) !important;
+  border-top: none;
+}
+
+.munya-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .munya-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 992px) {
+  .munya-footer__grid {
+    grid-template-columns: 1.35fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.munya-footer__about {
+  font-family: var(--munya-font-ar);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.58);
+  margin: 1rem 0 0;
+  max-width: 22rem;
+}
+
+.munya-footer__divider {
+  height: 1px;
+  margin: 2.25rem 0 1.5rem;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.55), transparent);
+}
+
+.munya-footer__bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .munya-footer__bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: right;
+  }
+
+  .munya-footer-social {
+    margin-inline-start: auto;
+  }
+}
+
+.munya-footer__credit {
+  font-family: var(--munya-font-ar);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
 }
 
 .footer.munya-footer .footer-1,
 .footer.munya-footer .footer-2 {
   width: auto !important;
   max-width: none !important;
+}
+
+.munya-footer__col {
+  text-align: right;
 }
 
 .munya-footer__col-title {
@@ -1587,6 +2730,10 @@ a.munya-contact-list__value:hover {
   color: #ffffff;
   margin: 0 0 1rem;
   text-align: right;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+  display: inline-block;
+  min-width: 6rem;
 }
 
 .munya-footer-col-links {
@@ -1667,31 +2814,11 @@ a.munya-contact-list__value:hover {
   opacity: 0.92;
 }
 
-.munya-footer__bottom {
-  margin-top: 2.5rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-}
-
-.munya-footer__legal {
+.munya-footer__copy {
   font-family: var(--munya-font-ar);
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.45);
-  max-width: 36rem;
-  margin-inline: auto;
-  line-height: 1.6;
-}
-
-.munya-footer__legal a {
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: underline;
-}
-
-.munya-footer__copy {
-  font-family: var(--munya-font-ar);
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
 }
 
 .munya-footer .mb-8 {

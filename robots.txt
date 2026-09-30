@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.munyacontracting.sa/sitemap.xml
+Sitemap: /sitemap.xml

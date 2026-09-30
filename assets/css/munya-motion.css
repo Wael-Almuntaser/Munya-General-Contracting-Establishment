@@ -1,0 +1,416 @@
+/* Munya — motion & micro-interactions (CSS + IO, no Framer) */
+html {
+  scroll-behavior: smooth;
+}
+
+body.munya-preloader-active {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .munya-motion-off *,
+  .munya-motion-off *::before,
+  .munya-motion-off *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scroll progress */
+.munya-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1200;
+  height: 3px;
+  width: 100%;
+  pointer-events: none;
+  background: transparent;
+}
+
+.munya-scroll-progress__bar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--munya-gold-gradient, linear-gradient(135deg, #c9a227, #e8c547));
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.45);
+  transform-origin: left center;
+  will-change: width;
+}
+
+html[dir="rtl"] .munya-scroll-progress__bar {
+  transform-origin: right center;
+}
+
+/* Preloader */
+.munya-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--munya-primary-deep, #061528);
+  transition: opacity 0.55s ease-out, visibility 0.55s ease-out;
+}
+
+.munya-preloader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.munya-preloader__inner {
+  text-align: center;
+  width: min(280px, 80vw);
+}
+
+.munya-preloader__logo {
+  display: block;
+  margin: 0 auto 1rem;
+  max-height: 56px;
+  width: auto;
+  animation: munya-preloader-pulse 1.2s ease-in-out infinite;
+}
+
+.munya-preloader__word {
+  font-family: var(--munya-font-ar, "IBM Plex Sans Arabic", sans-serif);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.munya-preloader__track {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.munya-preloader__bar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: var(--munya-gold-gradient, linear-gradient(135deg, #c9a227, #e8c547));
+  transition: width 0.15s linear;
+}
+
+@keyframes munya-preloader-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+}
+
+/* Custom cursor */
+.munya-cursor,
+.munya-cursor-dot {
+  display: none;
+}
+
+@media (pointer: fine) and (min-width: 1024px) {
+  body.munya-cursor-on {
+    cursor: none;
+  }
+
+  body.munya-cursor-on .munya-cursor,
+  body.munya-cursor-on .munya-cursor-dot {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1300;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+  }
+
+  .munya-cursor {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201, 162, 39, 0.55);
+    transition: width 0.35s ease-out, height 0.35s ease-out, border-color 0.35s ease-out, background 0.35s ease-out;
+  }
+
+  .munya-cursor-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--munya-gold, #c9a227);
+  }
+
+  body.munya-cursor-on.is-cursor-hover .munya-cursor {
+    width: 52px;
+    height: 52px;
+    background: rgba(201, 162, 39, 0.12);
+    border-color: var(--munya-gold-light, #e8c547);
+  }
+}
+
+/* Gradient animated headings */
+.munya-gradient-text {
+  background: linear-gradient(90deg, #c9a227, #e85d04, #e8c547, #c9a227);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: munya-gradient-shift 4s linear infinite;
+}
+
+@keyframes munya-gradient-shift {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Scroll reveal */
+.munya-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+  will-change: opacity, transform;
+}
+
+.munya-reveal.is-inview {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.munya-reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  will-change: opacity, transform;
+}
+
+.munya-reveal.is-inview .munya-reveal-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.munya-heading-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html[dir="rtl"] .munya-heading-reveal {
+  clip-path: inset(0 0 0 100%);
+}
+
+.munya-heading-reveal.is-inview {
+  clip-path: inset(0 0 0 0);
+}
+
+.munya-reveal-media {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: opacity, transform;
+}
+
+.munya-reveal-media.is-inview {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hero */
+.munya-hero__bg {
+  animation: munya-ken-burns 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes munya-ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+.munya-hero__title .munya-hero-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  animation: munya-hero-word-in 0.55s ease-out forwards;
+}
+
+.munya-hero__title .munya-hero-word--gap {
+  width: 0.35em;
+}
+
+.munya-hero__title::after {
+  width: 0 !important;
+  animation: munya-hero-line-grow 0.85s ease-out 0.55s forwards;
+}
+
+@keyframes munya-hero-word-in {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes munya-hero-line-grow {
+  to {
+    width: 5rem;
+  }
+}
+
+.munya-hero__badge,
+.munya-hero__lead,
+.munya-hero__actions {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  animation: munya-hero-fade-up 0.6s ease-out forwards;
+}
+
+.munya-hero__badge {
+  animation-delay: 0.15s;
+}
+
+.munya-hero__lead {
+  animation-delay: 0.45s;
+}
+
+.munya-hero__actions {
+  animation-delay: 0.6s;
+}
+
+@keyframes munya-hero-fade-up {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Parallax layers */
+.munya-parallax-layer {
+  will-change: transform;
+  transition: transform 0.08s linear;
+}
+
+/* Noise on dark sections */
+.munya-noise {
+  position: relative;
+}
+
+.munya-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.munya-noise > * {
+  position: relative;
+  z-index: 1;
+}
+
+.munya-mesh-corner {
+  position: relative;
+  overflow: hidden;
+}
+
+.munya-mesh-corner::after {
+  content: "";
+  position: absolute;
+  width: min(420px, 55vw);
+  height: min(420px, 55vw);
+  top: -20%;
+  inset-inline-end: -15%;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.12) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Micro-interactions — buttons */
+.munya-btn-primary,
+.munya-btn-outline,
+.munya-btn-cta,
+.munya-contact-form__submit,
+.munya-final-cta__btn,
+.munya-portfolio-filters__btn {
+  transition: transform 0.35s ease-out, box-shadow 0.35s ease-out, filter 0.35s ease-out, background 0.35s ease-out, color 0.35s ease-out, border-color 0.35s ease-out;
+}
+
+.munya-btn-primary:hover,
+.munya-btn-cta:hover,
+.munya-contact-form__submit:hover,
+.munya-final-cta__btn--primary:hover {
+  transform: translateY(-2px);
+}
+
+.munya-btn-outline:hover,
+.munya-final-cta__btn--wa:hover {
+  transform: translateY(-2px);
+}
+
+/* Nav underline */
+.munya-nav.main-menu > li > a {
+  position: relative;
+}
+
+.munya-nav.main-menu > li > a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 50%;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: var(--munya-gold-gradient, linear-gradient(135deg, #c9a227, #e8c547));
+  transition: width 0.35s ease-out, inset-inline 0.35s ease-out;
+}
+
+.munya-nav.main-menu > li > a:hover::after,
+.munya-nav.main-menu > li > a.active::after {
+  width: 100%;
+  inset-inline: 0;
+}
+
+/* Card hover gold line */
+.munya-value-slide,
+.munya-service-card__body,
+.munya-cert-card,
+.munya-benefit-card,
+.munya-value-slide {
+  position: relative;
+}
+
+.munya-icon-hover {
+  transition: transform 0.4s ease-out;
+}
+
+.munya-icon-hover:hover {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.munya-contact-list__icon,
+.munya-service-card__icon,
+.munya-bento__icon {
+  transition: transform 0.4s ease-out;
+}
+
+.munya-contact-list li:hover .munya-contact-list__icon,
+.munya-service-card:hover .munya-service-card__icon {
+  transform: scale(1.08);
+}

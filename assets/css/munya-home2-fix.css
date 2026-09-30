@@ -121,6 +121,13 @@ html[dir="rtl"] .header .main-header .header-right .btn-mode {
   display: none;
 }
 
+/* Prevent horizontal page scroll from wide sections */
+html.munya-site,
+html.munya-site body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 @media (max-width: 1199px) {
   html[dir="rtl"] .box-banner-home2 .banner-main .banner-image .container {
     padding-left: 32px !important;

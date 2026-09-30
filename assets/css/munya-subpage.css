@@ -1,0 +1,112 @@
+.munya-page-hero {
+  padding: 7rem 0 3rem;
+  background: linear-gradient(165deg, #0a1f44 0%, #132a52 55%, #0f1729 100%);
+  color: #fff;
+  text-align: center;
+}
+
+.munya-page-hero__title {
+  font-family: var(--munya-font-ar);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.munya-page-hero__lead {
+  font-family: var(--munya-font-ar);
+  max-width: 42rem;
+  margin: 0 auto 1.5rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
+.munya-page-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--munya-font-ar);
+  font-size: 0.875rem;
+  color: var(--munya-gold, #c9a227);
+  text-decoration: none;
+}
+
+.munya-page-hero__back:hover {
+  text-decoration: underline;
+}
+
+.munya-subpage-content {
+  padding: 3rem 0 4rem;
+}
+
+.munya-subpage-content .munya-shell {
+  max-width: 52rem;
+}
+
+.munya-subpage-content h2 {
+  font-family: var(--munya-font-ar);
+  font-size: 1.35rem;
+  margin: 2rem 0 0.75rem;
+  color: var(--munya-primary, #0a1f44);
+}
+
+.munya-subpage-content p,
+.munya-subpage-content li {
+  font-family: var(--munya-font-ar);
+  line-height: 1.85;
+  color: #334155;
+}
+
+.munya-service-detail {
+  border: 1px solid rgba(10, 31, 68, 0.1);
+  border-radius: 1rem;
+  padding: 1.25rem 1.35rem;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+[data-bs-theme="dark"] .munya-service-detail {
+  background: var(--munya-surface, #121f35);
+  border-color: var(--munya-border);
+}
+
+.munya-service-detail h3 {
+  font-family: var(--munya-font-ar);
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.munya-subpage-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  justify-content: center;
+  padding: 1rem 0 0;
+}
+
+.munya-subpage-nav a {
+  font-family: var(--munya-font-ar);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.munya-subpage-nav a[aria-current="page"] {
+  color: var(--munya-gold, #c9a227);
+}
+
+.munya-sub-header {
+  background: #0a1f44;
+  padding: 0.85rem 0;
+}
+
+.munya-sub-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.munya-sub-header__logo img {
+  height: 44px;
+  width: auto;
+}
