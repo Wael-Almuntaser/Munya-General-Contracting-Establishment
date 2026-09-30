@@ -1,0 +1,190 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "index.html#website",
+      "url": "index.html",
+      "name": "مؤسسة منئ للمقاولات العامة",
+      "alternateName": "Mani Foundation for General Contracting",
+      "description": "موقع مؤسسة منئ للمقاولات العامة — مقاولات عامة، إنشاء وصيانة المباني، تشطيبات، أعمال كهربائية وحدائق في المملكة العربية السعودية.",
+      "inLanguage": ["ar-SA", "en"],
+      "publisher": { "@id": "index.html#organization" }
+    },
+    {
+      "@type": ["Organization", "GeneralContractor", "LocalBusiness"],
+      "@id": "index.html#organization",
+      "name": "مؤسسة منئ للمقاولات العامة",
+      "alternateName": [
+        "Mani Foundation for General Contracting",
+        "منئ للمقاولات العامة"
+      ],
+      "legalName": "مؤسسة منئ للمقاولات العامة",
+      "url": "index.html",
+      "logo": "assets/imgs/munya/logo.png",
+      "image": [
+        "assets/imgs/munya/logo.png",
+        "assets/imgs/munya/hero-construction-site.jpeg",
+        "assets/imgs/munya/project-building-exterior.jpeg"
+      ],
+      "description": "تتخصص مؤسسة منئ للمقاولات العامة في كافة الإنشاءات العامة للمباني السكنية وغير السكنية وتشطيبها وصيانتها، وإنشاء وصيانة الحدائق، والأعمال الكهربائية والنظافة والديكور والتشطيبات العامة في المملكة العربية السعودية.",
+      "slogan": "نصنع لك الفرق في كل ما تحتاجه من خدمات",
+      "foundingDate": "2025",
+      "telephone": "+966558533792",
+      "email": "info@munya-contracting.sa",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "SA",
+        "addressRegion": "المملكة العربية السعودية"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Saudi Arabia"
+      },
+      "knowsAbout": [
+        "مقاولات عامة",
+        "إنشاء مباني سكنية وتجارية",
+        "تشطيبات داخلية وخارجية",
+        "صيانة المباني",
+        "الأعمال الكهربائية",
+        "الحدائق والمساحات الخضراء",
+        "الديكور",
+        "معايير السلامة المهنية",
+        "رؤية المملكة 2030"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+966558533792",
+          "contactType": "customer service",
+          "areaServed": "SA",
+          "availableLanguage": ["Arabic", "English"]
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "خدمات مؤسسة منئ للمقاولات العامة",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "إنشاء المباني",
+              "description": "مقاولات عامة للمباني السكنية وغير السكنية."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "التشطيبات الداخلية والخارجية",
+              "description": "تشطيبات عامة بجودة تنفيذ عالية والتزام بالمواعيد."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "صيانة المباني",
+              "description": "صيانة دورية ومتابعة ما بعد التسليم."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "الحدائق",
+              "description": "إنشاء وصيانة الحدائق والمساحات الخضراء."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "الأعمال الكهربائية",
+              "description": "تمديدات وصيانة كهربائية وفق معايير السلامة."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "الديكور والنظافة",
+              "description": "ديكور وتشطيبات عامة وخدمات نظافة مرتبطة بالمشاريع."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "index.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هي خدمات مؤسسة منئ للمقاولات العامة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تتخصص المؤسسة في الإنشاءات العامة للمباني السكنية وغير السكنية، التشطيبات الداخلية والخارجية، الصيانة، إنشاء وصيانة الحدائق، الأعمال الكهربائية، النظافة، الديكور، والتشطيبات العامة في مختلف مناطق المملكة العربية السعودية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما رؤية ورسالة مؤسسة منئ؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "رؤيتنا أن نكون من الشركات الرائدة في قطاع المقاولات بالمملكة عبر حلول مبتكرة متكامة. رسالتنا تقديم خدمات مقاولات متكاملة بكفاءة وجودة عالية مع الالتزام بمعايير السلامة العالمية وتنفيذ المشاريع في الوقت المحدد."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل تلتزمون بمعايير الجودة والسلامة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. تلتزم المؤسسة بتطبيق أعلى معايير الجودة والسلامة المهنية والبيئية بما يتوافق مع الأنظمة السعودية ومتطلبات الدفاع المدني والجهات المختصة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "في أي مناطق تعمل مؤسسة منئ؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ننفذ مشاريع متنوعة في مختلف مدن ومناطق المملكة العربية السعودية، بما يساهم في التنمية المستدامة وتحقيق رؤية المملكة 2030."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أتواصل للحصول على عرض سعر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يمكنك الاتصال على 055 853 3792 أو مراسلتنا عبر واتساب على +966558533792 أو البريد info@munya-contracting.sa. للتواصل: أبو شداد — مؤسسة منئ للمقاولات العامة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الذي يميز مشاريعكم؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تميزت مشاريعنا بالجودة العالية والابتكار، مع التركيز على جودة التنفيذ، الالتزام بالمواعيد، متابعة ما بعد البيع، وإيجاد حلول تناسب متطلبات كل عميل."
+          }
+        }
+      ]
+    }
+  ]
+}
