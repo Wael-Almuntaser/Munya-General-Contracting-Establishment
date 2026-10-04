@@ -133,7 +133,7 @@
     /* Auto-setup sections */
     $("main section, .munya-about-wrap > section").each(function () {
       var $sec = $(this);
-      if ($sec.hasClass("munya-hero") || $sec.hasClass("munya-reveal") || $sec.hasClass("munya-final-cta")) {
+      if ($sec.hasClass("munya-hero") || $sec.hasClass("munya-reveal") || $sec.hasClass("munya-final-cta") || $sec.hasClass("dekor-section") || $sec.hasClass("brochure-section")) {
         return;
       }
       $sec.addClass("munya-reveal");

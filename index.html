@@ -42,10 +42,12 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="assets/css/stylee209.css?v=1.0.0" rel="stylesheet">
     <link href="assets/css/rtl.css?v=2.0.0" rel="stylesheet">
-    <link href="assets/css/munya-site.css?v=2.4.1" rel="stylesheet">
+    <link href="assets/css/munya-site.css?v=2.4.2" rel="stylesheet">
     <link href="assets/css/munya-motion.css?v=1.0.0" rel="stylesheet">
     <link href="assets/css/munya-home2-fix.css?v=1.0.3" rel="stylesheet">
     <link href="assets/css/munya-a11y.css?v=1.0.0" rel="stylesheet">
+    <link href="css/custom.css?v=1.1.2" rel="stylesheet">
+    <link rel="preload" as="image" href="image/Dekor/dekor-1.jpg">
     <script type="application/ld+json" src="assets/seo/munya-seo-home.json"></script>
   </head>
   <body>
@@ -67,16 +69,8 @@
         <div class="main-header">
           <div class="header-left">
             <div class="header-logo">
-              <a class="munya-brand d-flex align-items-center gap-3" href="index.html#home">
-                <span class="munya-brand__icon" aria-hidden="true">
-                  <svg class="munya-icon-building" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24 4L8 14V38H18V28H30V38H40V14L24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M18 38V22H30V38" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M14 18H16M22 18H24M30 18H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </span>
-                <img class="munya-logo-img munya-logo-img--header munya-brand__logo-fallback" alt="" src="assets/imgs/munya/logo.png" width="120" height="48">
-                <span class="munya-brand__text">مؤسسة منئ <span class="munya-brand__sub">للمقاولات العامة</span></span>
+              <a class="munya-brand munya-brand--with-logo d-flex align-items-center gap-2" href="index.html#home">
+                <img class="munya-logo-img munya-logo-img--header" src="assets/imgs/munya/logo.png" alt="مؤسسة منئ للمقاولات العامة" width="160" height="56" decoding="async">
               </a>
             </div>
             <div class="header-nav d-none d-xl-block">
@@ -205,6 +199,24 @@
               </figure>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="brochure-showcase" class="brochure-showcase brochure-section" aria-labelledby="brochure-showcase-title">
+        <div class="brochure-showcase__shell brochure-reveal">
+          <h2 class="brochure-showcase__title" id="brochure-showcase-title">تعرّف علينا في 30 ثانية</h2>
+          <p class="brochure-showcase__sub">نظرة شاملة على خدماتنا ومشاريعنا — كما في البروشور الرسمي للمؤسسة</p>
+          <div class="brochure-showcase__frame" data-brochure-parallax>
+            <div class="brochure-showcase__inner">
+              <img class="brochure-showcase__img brochure-slice" data-src="image/heroo.jpeg" alt="بروشور مؤسسة منئ للمقاولات العامة — خدمات ومشاريع وتواصل" width="1200" height="2400" loading="lazy" decoding="async">
+              <div class="brochure-showcase__overlay">
+                <button type="button" class="brochure-showcase__action" data-brochure-open>تكبير العرض</button>
+                <a class="brochure-showcase__action" href="image/heroo.jpeg" download="munya-brochure.jpeg">تحميل البروشور</a>
+                <button type="button" class="brochure-showcase__action" data-brochure-share>مشاركة</button>
+              </div>
+            </div>
+          </div>
+          <p class="brochure-showcase__caption">مؤسسة منئ — بناء الجودة وصنع التفاصيل</p>
         </div>
       </section>
 
@@ -402,35 +414,89 @@
         <div class="container munya-shell">
           <header class="munya-services__head text-center">
             <span class="munya-services__eyebrow">خدماتنا</span>
-            <h2 class="munya-services__title" id="services-heading">حلول مقاولات متكاملة</h2>
-            <p class="munya-services__lead">من التأسيس إلى التشطيب والصيانة — وفق احتياج مشروعك في المملكة.</p>
+            <h2 class="munya-services__title" id="services-heading">خدماتنا المتكاملة</h2>
+            <p class="munya-services__lead">عشرة مجالات كما في بروشورنا — من الأساسات حتى الحدائق. للنظرة الشاملة راجع <a href="#brochure-showcase">البروشور التعريفي</a>.</p>
           </header>
-          <div class="munya-services__grid">
+          <div class="munya-services__grid munya-services__grid--10">
+            <article class="munya-service-card">
+              <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/hero-construction-site.jpeg');" aria-hidden="true"></div>
+              <div class="munya-service-card__body">
+                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 20V10l6-5 6 5v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+                <h3 class="munya-service-card__title">الأساسات</h3>
+                <p class="munya-service-card__desc">أعمال الأساسات والهيكل الإنشائي بمعايير هندسية دقيقة.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
+              </div>
+            </article>
             <article class="munya-service-card">
               <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/project-building-exterior.jpeg');" aria-hidden="true"></div>
               <div class="munya-service-card__body">
                 <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 18H20M6 18V10L12 6L18 10V18" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-                <h3 class="munya-service-card__title">إنشاء المباني</h3>
-                <p class="munya-service-card__desc">مقاولات عامة للمباني السكنية والتجارية.</p>
-                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="اطلب الخدمة عبر واتساب">اطلب الخدمة</a>
+                <h3 class="munya-service-card__title">البناء</h3>
+                <p class="munya-service-card__desc">إنشاء المباني السكنية والتجارية من التأسيس إلى الهيكل.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
               </div>
             </article>
             <article class="munya-service-card">
               <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/project-finishing-interior.jpeg');" aria-hidden="true"></div>
               <div class="munya-service-card__body">
-                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20H20M6 20V9L12 5L18 9V20" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 14H15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20H20M6 20V9L12 5L18 9V20" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
                 <h3 class="munya-service-card__title">التشطيبات</h3>
-                <p class="munya-service-card__desc">تشطيبات داخلية وخارجية بمعايير عالية.</p>
-                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="اطلب الخدمة عبر واتساب">اطلب الخدمة</a>
+                <p class="munya-service-card__desc">تشطيبات داخلية وخارجية بجودة عالية وتفاصيل متقنة.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
+              </div>
+            </article>
+            <article class="munya-service-card">
+              <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/project-finishing-interior.jpeg');" aria-hidden="true"></div>
+              <div class="munya-service-card__body">
+                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 19H19M7 16L12 11L16 15L21 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <h3 class="munya-service-card__title">الديكورات</h3>
+                <p class="munya-service-card__desc">ديكور داخلي وتصميم مساحات يليق بذوقك.</p>
+                <a class="munya-service-card__cta" href="#dekor-gypsum">اكتشف أعمالنا</a>
+              </div>
+            </article>
+            <article class="munya-service-card">
+              <div class="munya-service-card__bg" style="--munya-svc-bg: url('image/Dekor/dekor-1.jpg');" aria-hidden="true"></div>
+              <div class="munya-service-card__body">
+                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 10h16M4 14h16M6 10V6h12v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <h3 class="munya-service-card__title">الأسقف</h3>
+                <p class="munya-service-card__desc">أسقف جبس، كرانيش، وأبواب بتشطيب فاخر.</p>
+                <a class="munya-service-card__cta" href="#dekor-gypsum">اكتشف أعمالنا</a>
               </div>
             </article>
             <article class="munya-service-card">
               <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/hero-construction-site.jpeg');" aria-hidden="true"></div>
               <div class="munya-service-card__body">
                 <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M13 3L4 14H11L10 21L20 10H13L13 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-                <h3 class="munya-service-card__title">الأعمال الكهربائية</h3>
-                <p class="munya-service-card__desc">تمديدات وصيانة كهربائية آمنة ومعتمدة.</p>
-                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="اطلب الخدمة عبر واتساب">اطلب الخدمة</a>
+                <h3 class="munya-service-card__title">الكهرباء</h3>
+                <p class="munya-service-card__desc">تمديدات وإنارة وصيانة كهربائية آمنة.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
+              </div>
+            </article>
+            <article class="munya-service-card">
+              <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/project-building-exterior.jpeg');" aria-hidden="true"></div>
+              <div class="munya-service-card__body">
+                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M8 8c0-2 2-4 4-4s4 2 4 4v8H8V8zM6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <h3 class="munya-service-card__title">السباكة</h3>
+                <p class="munya-service-card__desc">شبكات سباكة وصحية وتمديدات للمباني والمجمعات.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
+              </div>
+            </article>
+            <article class="munya-service-card">
+              <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/project-finishing-interior.jpeg');" aria-hidden="true"></div>
+              <div class="munya-service-card__body">
+                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-4 8 4v12M9 20v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+                <h3 class="munya-service-card__title">تجهيز المحلات</h3>
+                <p class="munya-service-card__desc">تجهيز وتأثيث المحلات والمكاتب والواجهات التجارية.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
+              </div>
+            </article>
+            <article class="munya-service-card">
+              <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/hero-construction-site.jpeg');" aria-hidden="true"></div>
+              <div class="munya-service-card__body">
+                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M14 7H18V11M10 17H6V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <h3 class="munya-service-card__title">الترميم</h3>
+                <p class="munya-service-card__desc">ترميم شامل للمباني والوحدات بجودة تشطيب جديدة.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
               </div>
             </article>
             <article class="munya-service-card">
@@ -438,28 +504,209 @@
               <div class="munya-service-card__body">
                 <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 21C16 17 20 13 20 9C20 5.5 16.5 3 12 3C7.5 3 4 5.5 4 9C4 13 8 17 12 21Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 11C13.1046 11 14 10.1046 14 9C14 7.89543 13.1046 7 12 7C10.8954 7 10 7.89543 10 9C10 10.1046 10.8954 11 12 11Z" stroke="currentColor" stroke-width="1.6"/></svg></span>
                 <h3 class="munya-service-card__title">الحدائق</h3>
-                <p class="munya-service-card__desc">إنشاء وصيانة الحدائق والمساحات الخضراء.</p>
-                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="اطلب الخدمة عبر واتساب">اطلب الخدمة</a>
+                <p class="munya-service-card__desc">إنشاء وصيانة الحدائق والواجهات الخضراء.</p>
+                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a>
               </div>
             </article>
-            <article class="munya-service-card">
-              <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/hero-construction-site.jpeg');" aria-hidden="true"></div>
-              <div class="munya-service-card__body">
-                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M14 7H18V11M10 17H6V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C14.5 4 16.7 5.2 18.2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-                <h3 class="munya-service-card__title">الصيانة</h3>
-                <p class="munya-service-card__desc">صيانة دورية ومتابعة ما بعد التسليم.</p>
-                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="اطلب الخدمة عبر واتساب">اطلب الخدمة</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dekor & Gypsum — premium showcase (css/custom.css + js/dekor.js) -->
+      <section id="dekor-gypsum" class="dekor-section" aria-labelledby="dekor-heading">
+        <div class="dekor-section__pattern" aria-hidden="true"></div>
+        <div class="dekor-shell">
+          <header class="dekor-header dekor-reveal">
+            <p class="dekor-header__badge">خدماتنا المميزة</p>
+            <h2 class="dekor-header__title" id="dekor-heading">فن الديكورات والجبسيات</h2>
+            <p class="dekor-header__sub">نحوّل المساحات إلى تحف فنية بلمسة سعودية أصيلة — أسقف، كرانيش، إضاءة مخفية، وأقواس بتنفيذ يدل على الإتقان.</p>
+          </header>
+
+          <div class="dekor-tabs dekor-reveal" role="tablist" aria-label="تصنيفات أعمال الديكور">
+            <button type="button" class="dekor-tabs__btn is-active" role="tab" aria-selected="true" data-dekor-tab="ceilings" id="dekor-tab-ceilings">أسقف جبس</button>
+            <button type="button" class="dekor-tabs__btn" role="tab" aria-selected="false" data-dekor-tab="lighting" id="dekor-tab-lighting">كرانيش وإضاءة</button>
+            <button type="button" class="dekor-tabs__btn" role="tab" aria-selected="false" data-dekor-tab="walls" id="dekor-tab-walls">جدران فاخرة</button>
+          </div>
+
+          <div class="dekor-video-wrap dekor-video-wrap--portrait dekor-reveal">
+            <div class="dekor-video-showcase">
+              <div class="dekor-video-showcase__copy">
+                <p class="dekor-video-showcase__label">Gypsum &amp; Decoration Works</p>
+                <p class="dekor-video-showcase__lead">تسجيل ميداني لجدار تلفزيون وديكور جبسي — تفاصيل دقيقة، خطوط نظيفة، وتشطيب يعكس مستوى التنفيذ.</p>
+                <ul class="dekor-video-showcase__tags" aria-label="ما يظهر في الفيديو">
+                  <li>جدران ديكور</li>
+                  <li>خزائن مدمجة</li>
+                  <li>تشطيب نهائي</li>
+                </ul>
               </div>
-            </article>
-            <article class="munya-service-card">
-              <div class="munya-service-card__bg" style="--munya-svc-bg: url('assets/imgs/munya/project-finishing-interior.jpeg');" aria-hidden="true"></div>
-              <div class="munya-service-card__body">
-                <span class="munya-service-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 19H19M7 16L12 11L16 15L21 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <h3 class="munya-service-card__title">الديكور</h3>
-                <p class="munya-service-card__desc">ديكور وتشطيبات عامة تليق بذوقك.</p>
-                <a class="munya-service-card__cta munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="اطلب الخدمة عبر واتساب">اطلب الخدمة</a>
+              <div class="dekor-video-frame" data-dekor-parallax>
+                <span class="dekor-corner dekor-corner--tl" aria-hidden="true"></span>
+                <span class="dekor-corner dekor-corner--tr" aria-hidden="true"></span>
+                <span class="dekor-corner dekor-corner--bl" aria-hidden="true"></span>
+                <span class="dekor-corner dekor-corner--br" aria-hidden="true"></span>
+                <div class="dekor-video-frame__inner">
+                  <span class="dekor-video__badge">شاهد جودة تنفيذنا</span>
+                  <video class="dekor-video dekor-video--inline" poster="image/Dekor/dekor-1.jpg" muted loop playsinline preload="metadata" aria-label="فيديو أعمال الديكور والجبسيات">
+                    <source src="image/Dekor/dekor-video.mp4" type="video/mp4">
+                  </video>
+                  <div class="dekor-video__overlay" aria-hidden="true"></div>
+                  <button type="button" class="dekor-video__play" aria-label="تشغيل الفيديو بحجم كامل">
+                    <span class="dekor-video__play-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A1F44"><path d="M8 5.5v13l11-6.5L8 5.5z"/></svg>
+                    </span>
+                  </button>
+                </div>
               </div>
+            </div>
+          </div>
+
+          <div class="dekor-bento dekor-reveal" data-dekor-panel="ceilings" role="tabpanel" aria-labelledby="dekor-tab-ceilings">
+            <div class="dekor-bento__cell dekor-bento__cell--main">
+              <button type="button" class="dekor-gallery-btn" data-full="image/Dekor/dekor-1.jpg" data-caption="سقف جبس بتصميم هندسي">
+                <span class="dekor-gallery-btn__ph" aria-hidden="true"></span>
+                <img class="dekor-gallery-btn__img" src="image/Dekor/dekor-1.jpg" alt="سقف جبس بتصميم هندسي — مؤسسة منئ" width="900" height="700" loading="lazy" decoding="async">
+                <span class="dekor-gallery-btn__shade" aria-hidden="true"></span>
+                <span class="dekor-gallery-btn__zoom" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M21 21l-5-5M11 8v6M8 11h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <span class="dekor-gallery-btn__cap">سقف جبس بتصميم هندسي</span>
+              </button>
+            </div>
+            <div class="dekor-bento__cell dekor-bento__cell--b">
+              <button type="button" class="dekor-gallery-btn" data-full="image/Dekor/dekor-2.jpg" data-caption="كرانيش وإضاءة مخفية">
+                <span class="dekor-gallery-btn__ph" aria-hidden="true"></span>
+                <img class="dekor-gallery-btn__img" src="image/Dekor/dekor-2.jpg" alt="كرانيش وإضاءة مخفية" width="480" height="360" loading="lazy" decoding="async">
+                <span class="dekor-gallery-btn__shade" aria-hidden="true"></span>
+                <span class="dekor-gallery-btn__zoom" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M21 21l-5-5M11 8v6M8 11h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <span class="dekor-gallery-btn__cap">كرانيش وإضاءة مخفية</span>
+              </button>
+            </div>
+            <div class="dekor-bento__cell dekor-bento__cell--c">
+              <button type="button" class="dekor-gallery-btn" data-full="image/Dekor/dekor-3.jpg" data-caption="ديكور جدار فاخر">
+                <span class="dekor-gallery-btn__ph" aria-hidden="true"></span>
+                <img class="dekor-gallery-btn__img" src="image/Dekor/dekor-3.jpg" alt="ديكور جدار فاخر" width="480" height="360" loading="lazy" decoding="async">
+                <span class="dekor-gallery-btn__shade" aria-hidden="true"></span>
+                <span class="dekor-gallery-btn__zoom" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M21 21l-5-5M11 8v6M8 11h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <span class="dekor-gallery-btn__cap">ديكور جدار فاخر</span>
+              </button>
+            </div>
+            <div class="dekor-bento__cell dekor-bento__cell--note">
+              <p class="dekor-bento__note-text">أعمال جبسيات · <span>أسقف</span> · كرانيش · <span>إضاءة مخفية</span> · أقواس · ديكورات جدارية</p>
+            </div>
+          </div>
+
+          <div class="dekor-bento dekor-reveal" data-dekor-panel="lighting" hidden role="tabpanel" aria-labelledby="dekor-tab-lighting">
+            <div class="dekor-bento__cell dekor-bento__cell--main">
+              <button type="button" class="dekor-gallery-btn" data-full="image/Dekor/dekor-2.jpg" data-caption="كرانيش وإضاءة مخفية">
+                <img class="dekor-gallery-btn__img is-loaded" src="image/Dekor/dekor-2.jpg" alt="" width="900" height="700" loading="lazy">
+                <span class="dekor-gallery-btn__shade"></span>
+                <span class="dekor-gallery-btn__cap">إضاءة LED مخفية داخل الكرانيش</span>
+              </button>
+            </div>
+            <div class="dekor-bento__cell dekor-bento__cell--note" style="grid-column:2/4;grid-row:1/3">
+              <p class="dekor-bento__note-text">تصميم <span>إضاءة</span> يبرز تفاصيل الجبس ويمنح عمقاً بصرياً للمساحة</p>
+            </div>
+          </div>
+
+          <div class="dekor-bento dekor-reveal" data-dekor-panel="walls" hidden role="tabpanel" aria-labelledby="dekor-tab-walls">
+            <div class="dekor-bento__cell dekor-bento__cell--main">
+              <button type="button" class="dekor-gallery-btn" data-full="image/Dekor/dekor-3.jpg" data-caption="ديكور جدار فاخر">
+                <img class="dekor-gallery-btn__img is-loaded" src="image/Dekor/dekor-3.jpg" alt="" width="900" height="700" loading="lazy">
+                <span class="dekor-gallery-btn__shade"></span>
+                <span class="dekor-gallery-btn__cap">ديكور جدار ثلاثي الأبعاد</span>
+              </button>
+            </div>
+            <div class="dekor-bento__cell dekor-bento__cell--note" style="grid-column:2/4;grid-row:1/3">
+              <p class="dekor-bento__note-text">ألواح جبسية و<span>تفاصيل</span> جدارية تناسب المجالس والفلل والمشاريع التجارية</p>
+            </div>
+          </div>
+
+          <div class="dekor-features dekor-reveal">
+            <div class="dekor-features__item">
+              <span class="dekor-features__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M8 36V16l16-8 16 8v20" stroke="currentColor" stroke-width="1.5"/><path d="M16 36V24h16v12" stroke="currentColor" stroke-width="1.5"/><path d="M24 8v8M32 12l-4 4M16 12l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <p class="dekor-features__label">تصميم ثلاثي الأبعاد</p>
+            </div>
+            <div class="dekor-features__item">
+              <span class="dekor-features__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M12 8h24v32H12z" stroke="currentColor" stroke-width="1.5"/><path d="M12 16h24M18 24h12M18 32h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M36 14l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <p class="dekor-features__label">خامات عالية الجودة</p>
+            </div>
+            <div class="dekor-features__item">
+              <span class="dekor-features__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/><path d="M24 14v10l6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <p class="dekor-features__label">تنفيذ خلال وقت قياسي</p>
+            </div>
+            <div class="dekor-features__item">
+              <span class="dekor-features__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><path d="M24 6l5 10 11 2-8 7 2 11-10-5-10 5 2-11-8-7 11-2 5-10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="dekor-features__label">ضمان سنة على الأعمال</p>
+            </div>
+          </div>
+
+          <h3 class="dekor-process__title dekor-reveal">خطوات العمل</h3>
+          <div class="dekor-process__track">
+            <article class="dekor-step">
+              <span class="dekor-step__num">01</span>
+              <span class="dekor-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 16l4-4 4 4 8-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <h4 class="dekor-step__name">الاستشارة والتصميم</h4>
+              <p class="dekor-step__desc">زيارة الموقع واختيار النمط المناسب لمساحتك.</p>
             </article>
+            <article class="dekor-step">
+              <span class="dekor-step__num">02</span>
+              <span class="dekor-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="5" y="5" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <h4 class="dekor-step__name">اختيار الخامات</h4>
+              <p class="dekor-step__desc">جبس ومعاجين وإضاءة بمعايير جودة معتمدة.</p>
+            </article>
+            <article class="dekor-step">
+              <span class="dekor-step__num">03</span>
+              <span class="dekor-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 18h16M7 18V11l5-4 5 4v7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+              <h4 class="dekor-step__name">التنفيذ الاحترافي</h4>
+              <p class="dekor-step__desc">فرق متخصصة بدقة في التفاصيل والتشطيب النهائي.</p>
+            </article>
+            <article class="dekor-step">
+              <span class="dekor-step__num">04</span>
+              <span class="dekor-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <h4 class="dekor-step__name">التسليم والفحص</h4>
+              <p class="dekor-step__desc">مراجعة شاملة قبل التسليم لضمان رضاك التام.</p>
+            </article>
+            <article class="dekor-step">
+              <span class="dekor-step__num">05</span>
+              <span class="dekor-step__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <h4 class="dekor-step__name">المتابعة والضمان</h4>
+              <p class="dekor-step__desc">ضمان سنة ومتابعة ما بعد التسليم.</p>
+            </article>
+          </div>
+
+          <div class="dekor-cta dekor-reveal">
+            <div class="dekor-cta__pattern" aria-hidden="true"></div>
+            <div class="dekor-cta__inner">
+              <h3 class="dekor-cta__heading">هل تريد تحويل مساحتك إلى تحفة فنية؟</h3>
+              <div class="dekor-cta__actions">
+                <a class="dekor-cta__btn dekor-cta__btn--primary munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="اطلب استشارة ديكور مجانية عبر واتساب">اطلب استشارة ديكور مجانية</a>
+                <a class="dekor-cta__btn dekor-cta__btn--outline" href="#portfolio">تصفح المزيد من أعمالنا</a>
+              </div>
+              <p class="dekor-cta__wa">أو راسلنا مباشرة على واتساب: <a class="munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" dir="ltr">055 853 3792</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dekor-lightbox" id="dekor-lightbox" role="dialog" aria-modal="true" aria-label="معرض الصور" aria-hidden="true">
+          <button type="button" class="dekor-lightbox__close" aria-label="إغلاق">&times;</button>
+          <button type="button" class="dekor-lightbox__nav dekor-lightbox__nav--prev" aria-label="الصورة السابقة">&#10094;</button>
+          <img class="dekor-lightbox__img" src="" alt="">
+          <button type="button" class="dekor-lightbox__nav dekor-lightbox__nav--next" aria-label="الصورة التالية">&#10095;</button>
+          <p class="dekor-lightbox__cap"></p>
+        </div>
+
+        <div class="dekor-video-modal" id="dekor-video-modal" role="dialog" aria-modal="true" aria-label="عرض الفيديو" aria-hidden="true">
+          <button type="button" class="dekor-video-modal__close" aria-label="إغلاق الفيديو">&times;</button>
+          <div class="dekor-video-modal__inner">
+            <video class="dekor-video-modal__video" controls playsinline>
+              <source src="image/Dekor/dekor-video.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </section>
@@ -647,7 +894,7 @@
             </details>
             <details class="munya-faq__item" id="faq-contact">
               <summary class="munya-faq__question">كيف أتواصل للحصول على عرض سعر؟</summary>
-              <p class="munya-faq__answer">للتواصل: أبو شداد — اتصل على <a href="tel:+966558533792">055 853 3792</a>، أو <a class="munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">راسلنا على واتساب</a>، أو البريد <a href="mailto:info@munya-contracting.sa">info@munya-contracting.sa</a>.</p>
+              <p class="munya-faq__answer">للتواصل: أبو شداد — اتصل على <a href="tel:+966558533792">055 853 3792</a> أو <a class="munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer">راسلنا على واتساب</a>.</p>
             </details>
             <details class="munya-faq__item" id="faq-projects">
               <summary class="munya-faq__question">ما الذي يميز مشاريعكم؟</summary>
@@ -714,15 +961,6 @@
                   <div>
                     <span class="munya-contact-list__label">واتساب</span>
                     <a class="munya-contact-list__value munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="مراسلة فورية عبر واتساب">مراسلة فورية</a>
-                  </div>
-                </li>
-                <li>
-                  <span class="munya-contact-list__icon munya-contact-list__icon--gold" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7L12 13L20 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                  <div>
-                    <span class="munya-contact-list__label">البريد الإلكتروني</span>
-                    <a class="munya-contact-list__value" href="mailto:info@munya-contracting.sa">info@munya-contracting.sa</a>
                   </div>
                 </li>
                 <li>
@@ -833,7 +1071,6 @@
             <ul class="munya-footer-contact">
               <li><a href="tel:+966558533792">055 853 3792</a></li>
               <li><a class="munya-wa-link" href="https://wa.me/966558533792" target="_blank" rel="noopener noreferrer" aria-label="تواصل عبر واتساب">واتساب</a></li>
-              <li><a href="mailto:info@munya-contracting.sa">info@munya-contracting.sa</a></li>
               <li>المملكة العربية السعودية</li>
             </ul>
           </div>
@@ -874,7 +1111,25 @@
     <script src="assets/js/plugins/slider.js"></script>
     <!--Custom script for this template-->
     <script src="assets/js/maine209.js?v=1.0.0"></script>
+    <div class="brochure-lightbox" id="brochure-lightbox" role="dialog" aria-modal="true" aria-label="عرض البروشور" aria-hidden="true">
+      <div class="brochure-lightbox__toolbar">
+        <button type="button" class="brochure-lightbox__tool" data-brochure-zoom="out" aria-label="تصغير">−</button>
+        <button type="button" class="brochure-lightbox__tool" data-brochure-zoom="in" aria-label="تكبير">+</button>
+        <a class="brochure-lightbox__tool" data-brochure-download href="image/heroo.jpeg" download="munya-brochure.jpeg" aria-label="تحميل البروشور">↓</a>
+        <button type="button" class="brochure-lightbox__tool brochure-lightbox__close" aria-label="إغلاق">&times;</button>
+      </div>
+      <div class="brochure-lightbox__stage">
+        <img class="brochure-lightbox__img" src="" alt="">
+      </div>
+      <p class="brochure-lightbox__hint">Esc للإغلاق · Ctrl+عجلة للتكبير · + / −</p>
+    </div>
+
+    <!-- GSAP (optional parallax) — https://gsap.com/docs/v3/ -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
     <script src="assets/js/munya-site.js?v=2.5.2"></script>
+    <script src="js/brochure.js?v=1.0.0" defer></script>
+    <script src="js/dekor.js?v=1.0.0"></script>
     <script src="assets/js/munya-motion.js?v=1.0.0"></script>
   </body>
 </html>

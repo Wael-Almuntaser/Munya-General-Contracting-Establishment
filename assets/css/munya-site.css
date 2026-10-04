@@ -65,8 +65,8 @@ main .container,
 }
 
 .munya-logo-img--header {
-  max-height: 48px;
-  max-width: 120px;
+  max-height: 56px;
+  max-width: min(200px, 46vw);
 }
 
 .munya-logo-img--mobile {
@@ -165,7 +165,7 @@ main .container,
   display: block;
 }
 
-.munya-brand__logo-fallback {
+.munya-brand--with-logo .munya-brand__text {
   display: none !important;
 }
 
